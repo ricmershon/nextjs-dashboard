@@ -22,9 +22,8 @@ interface EditInvoiceFormProps {
 export default function EditInvoiceForm({ invoice, customers}: EditInvoiceFormProps) {
     const initialState: State = { message: null, errors: {} };
     const updateInvoiceWithId = updateInvoice.bind(null, invoice.id);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [state, formAction] = useActionState(updateInvoiceWithId, initialState);
-
-    console.log('^^^ EDIT FORM STATE ^^^', state);
 
     return (
         <form  action={formAction}>
