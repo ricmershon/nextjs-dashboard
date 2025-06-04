@@ -1,8 +1,9 @@
 import '@/app/ui/global.css';
+import { inter } from '@/app/ui/fonts';
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
     <html lang="en">
-        <body>{children}</body>
+        <body className={`${inter.className} antialiased`}>{children}</body>
     </html>
 );
 
