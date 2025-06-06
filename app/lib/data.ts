@@ -1,6 +1,6 @@
 import postgres from 'postgres';
 import {
-  CustomerField,
+    CustomerField,
     CustomersTableType,
     InvoiceForm,
     InvoicesTable,
@@ -11,24 +11,24 @@ import { formatCurrency } from './utils';
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
-export async function fetchRevenue() {
-  try {
-    // Artificial timeout for demo purposes
-    console.log('Fetching revenue data...');
-    await new Promise((resolve) => setTimeout(resolve, 3000));
+export const fetchRevenue = async () => {
+    try {
+        // Artificial timeout for demo purposes
+        // console.log('Fetching revenue data...');
+        // await new Promise((resolve) => setTimeout(resolve, 3000));
 
-    const data = await sql<Revenue[]>`SELECT * FROM revenue`;
+        const data = await sql<Revenue[]>`SELECT * FROM revenue`;
 
-    console.log('Data fetch completed after 3 seconds.');
+        // console.log('Data fetch completed after 3 seconds.');
 
-    return data;
-  } catch (error) {
-    console.error('Database Error:', error);
-    throw new Error('Failed to fetch revenue data.');
-  }
+        return data;
+    } catch (error) {
+        console.error('Database Error:', error);
+        throw new Error('Failed to fetch revenue data.');
+    }
 }
 
-export async function fetchLatestInvoices() {
+export const fetchLatestInvoices = async () => {
   try {
     const data = await sql<LatestInvoiceRaw[]>`
       SELECT invoices.amount, customers.name, customers.image_url, customers.email, invoices.id
@@ -119,7 +119,7 @@ export async function fetchFilteredInvoices(
   }
 }
 
-export async function fetchInvoicesPages(query: string) {
+export async function fetchNumInvoicesPages(query: string) {
   try {
     const data = await sql`SELECT COUNT(*)
     FROM invoices
