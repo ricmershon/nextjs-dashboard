@@ -6,7 +6,6 @@ import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 
 const Search = ({ placeholder }: { placeholder: string }) => {
     const searchParams = useSearchParams();
-    console.log('^^^ SEARCH searchParams ^^^', searchParams);
     const pathname = usePathname();
     const { replace } = useRouter();
 
