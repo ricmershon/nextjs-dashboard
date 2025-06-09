@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+import { Metadata } from 'next';
 
 import Pagination from '@/app/ui/invoices/pagination';
 import Search from '@/app/ui/search';
@@ -13,6 +14,10 @@ interface PageProps {
         query?: string;
         page?: string
     }>
+}
+
+export const metadata: Metadata = {
+    title: 'Invoices'
 }
 
 export default async function Page(props: PageProps) {
